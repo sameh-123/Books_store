@@ -39,4 +39,5 @@ urlpatterns = [
     path('ret/<int:id>',ret,name='ret'),
     path('rett/<int:id>',rett,name='rett'),
     path('search',search,name='search'),
+    path('logout',logout,name='logout')
 ]

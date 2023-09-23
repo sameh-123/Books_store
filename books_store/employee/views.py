@@ -6,6 +6,8 @@ from .form import *
 # Create your views here.
 def admin_page(req):
     context={}
+    if 'id' not in req.session:
+        return redirect("/loginadmin")
     context["user"]=req.session["username"]
     return render(req,"admin_page.html",context)
 
@@ -28,6 +30,8 @@ def loginadmin(req):
 
 def changeadminpass(request):
     context={}
+    if 'id' not in request.session:
+        return redirect("/loginadmin")
     user=request.session['username']
     context['user']=user
     curs=adminall.objects.get(username=user)
@@ -49,6 +53,8 @@ def changeadminpass(request):
     return render(request, "changepass.html",context)
 
 def addbook(request):
+    if 'id' not in request.session:
+        return redirect("/loginadmin")
     form=bookform()
     context={'form':form}
     if request.method=='POST':
@@ -59,6 +65,8 @@ def addbook(request):
 
 def allbooks(req):
     context={}
+    if 'id' not in req.session:
+        return redirect("/loginadmin")
     context["user"]=req.session["username"]
     books=book.objects.all()
     context["books"]=books
@@ -67,18 +75,24 @@ def allbooks(req):
 
 def allusers(req):
     context={}
+    if 'id' not in req.session:
+        return redirect("/loginadmin")
     context["user"]=req.session["username"]
     stds=student.objects.all()
     context["users"]=stds
     return render(req,"allusers.html",context)
 
 def deletebook(req,id):
+    if 'id' not in req.session:
+        return redirect("/loginadmin")
     book.objects.filter(id=id).delete()
     return redirect("/all_books")
 
 
 
 def search(request):
+    if 'id' not in request.session:
+        return redirect("/loginadmin")
     user_id=request.POST.get('id')
     books=Borrow.objects.filter(student_id=str(user_id))
     std=student.objects.get(id=str(user_id))
@@ -91,6 +105,8 @@ def search(request):
 
 def rett(request,id):
     context={}
+    if 'id' not in request.session:
+        return redirect("/loginadmin")
     user_id=request.session['idd']
     Borrow.objects.filter(book_id=str(id),student_id=str(user_id)).delete()
     books=Borrow.objects.filter(student_id=str(user_id))
@@ -99,3 +115,8 @@ def rett(request,id):
     request.session["id"] = user_id
     request.session["username"] = student.objects.get(id=str(user_id)).username
     return render(request,'search.html',context)
+
+def logout(req):
+    del req.session['id']
+    del req.session['username']
+    return redirect("/loginadmin")
