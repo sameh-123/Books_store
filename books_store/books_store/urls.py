@@ -30,5 +30,5 @@ urlpatterns = [
     path('loginadmin',loginadmin),
     path('admin-page',admin_page),
     path('changeadminpass',changeadminpass),
-    
+    path('logout',logout)
 ]
