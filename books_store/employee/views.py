@@ -62,7 +62,7 @@ def allbooks(req):
     context["user"]=req.session["username"]
     books=book.objects.all()
     context["books"]=books
-    return render(req,"empolyee/allbooks.html",context)
+    return render(req,"allbooks.html",context)
 
 
 def allusers(req):
@@ -70,11 +70,11 @@ def allusers(req):
     context["user"]=req.session["username"]
     stds=student.objects.all()
     context["users"]=stds
-    return render(req,"empolyee/allusers.html",context)
+    return render(req,"allusers.html",context)
 
 def deletebook(req,id):
     book.objects.filter(id=id).delete()
-    return redirect("empolyee/all_books")
+    return redirect("/all_books")
 
 
 
