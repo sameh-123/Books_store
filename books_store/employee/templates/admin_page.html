@@ -73,17 +73,16 @@
             <li><a href="http://127.0.0.1:8000/admin_page">Home</a></li>
             <li><a href="http://127.0.0.1:8000/changeadminpass">Change Password</a></li>
             <li><a href="http://127.0.0.1:8000/all_books">Books</a></li>
-            <li><a href="http://127.0.0.1:8000/all_users">All Users</a></li>
+            <li><a href="http://127.0.0.1:8000/all_users">Users</a></li>
             <li><a href="http://127.0.0.1:8000">Log out</a></li>
         </ul>
     </div>
-    {%endblock%}
-    <div class="form-container">
-        <form method="post">
-            {%csrf_token%}
-            {{form}}
-            <input type="submit" value="Borrow">
+    <div>
+        <form action="/search" method="POST">
+            <input type="text" name="query" placeholder="Search">
+            <button type="submit">Search</button>
         </form>
     </div>
+    {%endblock%}
 </body>
 </html>
