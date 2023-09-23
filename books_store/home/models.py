@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 
 class book(models.Model):
@@ -18,7 +18,7 @@ class student(models.Model):
 class Borrow(models.Model):
     student = models.ForeignKey(student, on_delete=models.CASCADE)
     book = models.ForeignKey(book, on_delete=models.CASCADE)
-    date_start = models.DateField()
+    date_start = models.DateField(default=datetime.now)
     date_end = models.DateTimeField()
 
     

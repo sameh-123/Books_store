@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import *
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 
@@ -25,7 +25,7 @@ def signin(request):
                 return render(request, "home/student_page.html",context)
         except:
             context['warn']="there is no user with this username"
-    return render(request, "home/signin.html",context)
+    else : return render(request, "home/signin.html",context)
 def signup(request):
     context={}
     if request.method=='POST':

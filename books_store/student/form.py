@@ -1,4 +1,3 @@
-from django.db import models
 from django import forms
 from home.models import *
 # Create your models here.
@@ -6,4 +5,4 @@ from home.models import *
 class bookform(forms.ModelForm):
     class Meta:
         model = book
-        fields = ['name']
+        fields = '__all__'
