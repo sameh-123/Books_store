@@ -11,7 +11,7 @@ def signin(request,id):
     if request.method=='POST':
         stud=student.objects.get(id=id)
         if stud==None:
-            context
+            context['warn']
     return render(request, "home/signin.html")
 def signup(request):
     context={}
