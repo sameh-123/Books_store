@@ -250,12 +250,11 @@
         "documentation": {}
     },
     {
-        "label": "sys",
-        "kind": 6,
+        "label": "*",
+        "importPath": "home.models",
+        "description": "home.models",
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "detail": "home.models",
         "documentation": {}
     },
     {
@@ -515,16 +514,7 @@
         "kind": 2,
         "importPath": "home.views",
         "description": "home.views",
-        "peekOfCode": "def home(request):\n    return render(request, \"home/homebase.html\")\ndef student_page(request):\ndef signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context['warn']=\"there is no user with these data\"\n        else:",
-        "detail": "home.views",
-        "documentation": {}
-    },
-    {
-        "label": "student_page",
-        "kind": 2,
-        "importPath": "home.views",
-        "description": "home.views",
-        "peekOfCode": "def student_page(request):\ndef signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context['warn']=\"there is no user with these data\"\n        else:\n            return render(request, \"home/signin.html\")\n    return render(request, \"home/signin.html\")",
+        "peekOfCode": "def home(request):\n    return render(request, \"home/homebase.html\")\ndef signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context['warn']=\"there is no user with these data\"\n        else:\n            return render(request, \"home/signin.html\")",
         "detail": "home.views",
         "documentation": {}
     },
@@ -553,15 +543,6 @@
         "description": "student.apps",
         "peekOfCode": "class StudentConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'student'",
         "detail": "student.apps",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "manage",
-        "description": "manage",
-        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'books_store.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
-        "detail": "manage",
         "documentation": {}
     }
 ]

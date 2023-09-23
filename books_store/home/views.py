@@ -6,8 +6,7 @@ from .models import *
 # Create your views here.
 def home(request):
     return render(request, "home/homebase.html")
-def student_page(request):
-    
+
 def signin(request,id):
     context={}
     if request.method=='POST':
