@@ -6,12 +6,16 @@ from .models import *
 # Create your views here.
 def home(request):
     return render(request, "home/homebase.html")
+def student_page(request):
+    
 def signin(request,id):
     context={}
     if request.method=='POST':
         stud=student.objects.get(id=id)
         if stud==None:
-            context['warn']
+            context['warn']="there is no user with these data"
+        else:
+            return render(request, "home/signin.html")
     return render(request, "home/signin.html")
 def signup(request):
     context={}
