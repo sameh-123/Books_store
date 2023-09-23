@@ -515,7 +515,16 @@
         "kind": 2,
         "importPath": "home.views",
         "description": "home.views",
-        "peekOfCode": "def home(request):\n    return render(request, \"home/homebase.html\")\ndef signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context\n    return render(request, \"home/signin.html\")\ndef signup(request):",
+        "peekOfCode": "def home(request):\n    return render(request, \"home/homebase.html\")\ndef student_page(request):\ndef signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context['warn']=\"there is no user with these data\"\n        else:",
+        "detail": "home.views",
+        "documentation": {}
+    },
+    {
+        "label": "student_page",
+        "kind": 2,
+        "importPath": "home.views",
+        "description": "home.views",
+        "peekOfCode": "def student_page(request):\ndef signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context['warn']=\"there is no user with these data\"\n        else:\n            return render(request, \"home/signin.html\")\n    return render(request, \"home/signin.html\")",
         "detail": "home.views",
         "documentation": {}
     },
@@ -524,7 +533,7 @@
         "kind": 2,
         "importPath": "home.views",
         "description": "home.views",
-        "peekOfCode": "def signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context\n    return render(request, \"home/signin.html\")\ndef signup(request):\n    context={}\n    if request.method=='POST':",
+        "peekOfCode": "def signin(request,id):\n    context={}\n    if request.method=='POST':\n        stud=student.objects.get(id=id)\n        if stud==None:\n            context['warn']=\"there is no user with these data\"\n        else:\n            return render(request, \"home/signin.html\")\n    return render(request, \"home/signin.html\")\ndef signup(request):",
         "detail": "home.views",
         "documentation": {}
     },
