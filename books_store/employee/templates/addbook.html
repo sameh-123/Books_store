@@ -64,6 +64,68 @@
             margin: 0;
             background-color: aliceblue;
         }
+        body{
+            background-image: url("{% static 'ba1.jpg'%}");
+            padding: 0;
+            margin: 0;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            padding: 10px;
+        }
+
+        form {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 30px;
+            font-style: italic;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            height: 50px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
+        input[type="password"] {
+            width: 300px;
+            height: 50px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            height: 50px;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -73,11 +135,17 @@
             <li><a href="http://127.0.0.1:8000/admin_page">Home</a></li>
             <li><a href="http://127.0.0.1:8000/changeadminpass">Change Password</a></li>
             <li><a href="http://127.0.0.1:8000/all_books">Books</a></li>
-            <li><a href="http://127.0.0.1:8000/all_users">All Users</a></li>
+            <li><a href="http://127.0.0.1:8000/all_users">Users</a></li>
             <li><a href="http://127.0.0.1:8000">Log out</a></li>
         </ul>
-        
     </div>
     {%endblock%}
+    <div class="form-container">
+        <form method="post">
+            {%csrf_token%}
+            {{form}}
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
 </body>
 </html>
