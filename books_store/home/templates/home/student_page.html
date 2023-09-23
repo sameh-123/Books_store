@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Borrowed Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'ba1.jpg'%}");
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            font-style: italic;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #11acb8;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(odd) {
+            background-color: #727070;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Library Borrowed Books</h1>
+        {% block context%}
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Date Borrowed</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for u in users.book_have%}
+                <tr>
+                    <td>{{u.name}}</td>
+                    <td>{{u.date_start}}</td>
+                    <td>{{u.date_end}}</td>
+                </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+        {%blockend%}
+    </div>
+</body>
+</html>
