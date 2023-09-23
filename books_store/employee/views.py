@@ -78,16 +78,24 @@ def deletebook(req,id):
 
 
 
-def search(req):
+def search(request):
+    user_id=request.POST.get('id')
+    books=Borrow.objects.filter(student_id=str(user_id))
+    std=student.objects.get(id=str(user_id))
     context={}
-    if req.method=='POST':
-        name=req.POST.get('id')
-        students=student.objects.filter(student_id=str(id))
-        if len(students)!=1 :
-            context['warn']="there is no user with this id"
-            return render(req,"search.html",context)
-        students=students[0]
-        context["user"]=students
-        context["books"]=Borrow.objects.filter(student_id=str(id))
-        return render(req,"search.html",context)
-    return render(req,"search.html",context)
+    context['books']=books
+    context['user']=std.username
+    return render(request,"search.html",context)
+
+
+def rett(request,id):
+    context={}
+    user_n=request.session['username']
+    std=student.objects.get(username=user_n)
+    user_id=std.id
+    Borrow.objects.filter(book_id=str(id),student_id=str(user_id)).delete()
+    books=Borrow.objects.filter(student_id=str(std.id))
+    context['books']=books
+    request.session["id"] = std.id
+    request.session["username"] = std.username
+    return redirect("/student_page")

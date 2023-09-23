@@ -12,37 +12,50 @@
             padding: 0;
             margin: 0;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        * {
+            box-sizing: border-box;
         }
-        h1 {
-            text-align: center;
-            background-color: #f2f2f2;
-            border-radius: 10px;
-            font-style: italic;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #11acb8;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
 
+        /* Style the search container */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Center the search bar vertically */
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        /* Style the form */
+        form {
+            display: flex;
+            border: 2px solid #ccc;
+            border-radius: 30px;
+            overflow: hidden;
         }
-        tr:nth-child(odd) {
-            background-color: #727070;
+
+        /* Style the input field */
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 30px;
+            border-radius: 30px 0 0 30px;
+        }
+
+        /* Style the search button */
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 0 30px 30px 0;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Style the search button on hover */
+        button[type="submit"]:hover {
+            background-color: #0056b3;
         }
         ul{
             list-style: none;
@@ -78,9 +91,10 @@
         </ul>
         
     </div>
-    <div>
-        <form action="/search" method="POST">
-            <input type="text" name="query" placeholder="Search">
+    <div class="search-container">
+        <form method="post" action="/search">
+            {% csrf_token %}
+            <input type="text" placeholder="Search..." name='id'>
             <button type="submit">Search</button>
         </form>
     </div>
