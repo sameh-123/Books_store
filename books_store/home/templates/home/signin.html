@@ -64,6 +64,10 @@
         button:hover {
             background-color: #555;
         }
+        .warn{
+            color: red;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -75,11 +79,14 @@
             <h2>Student Login</h2>
             <form id="student-login-form" method="post">
                 {% csrf_token %}
-                <label for="student-username">Username:</label>
-                <input type="text" id="student-username" name="student-username" required>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <div class="warn">{{warn}}</div>
 
-                <label for="student-password">Password:</label>
-                <input type="password" id="student-password" name="student-password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="warn">{{warn2}}</div>
+
 
                 <button type="submit">Login</button>
             </form>
