@@ -37,5 +37,6 @@ urlpatterns = [
     path('deletebook/<int:id>',deletebook,name='deletebook'),
     path('addbook',addbook,name='addbook'),
     
+    path('ret/<int:id>',ret,name='ret'),
     
 ]
