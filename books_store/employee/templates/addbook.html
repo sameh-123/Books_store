@@ -78,5 +78,13 @@
         </ul>
     </div>
     {%endblock%}
+    <form id="change-admin-pass" method="post">
+        {% csrf_token %}
+        <div class="warn">{{warn}}</div>
+
+        <label for="name">New Book:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>

@@ -70,9 +70,11 @@
     {% block context%}        
     <div class="nav">
         <ul>
-            <li><a href="http://127.0.0.1:8000/signin">Log out</a></li>
-            <li><a href="http://127.0.0.1:8000/changeadminpass">{{user}}</a></li>
-            <li><a href="http://127.0.0.1:8000/add_book">Borrow</a></li>
+            <li><a href="http://127.0.0.1:8000/admin-page">Home</a></li>
+            <li><a href="http://127.0.0.1:8000/changeadminpass">Change Password</a></li>
+            <li><a href="http://127.0.0.1:8000/all_books">Books</a></li>
+            <li><a href="http://127.0.0.1:8000/all_users">All Users</a></li>
+            <li><a href="http://127.0.0.1:8000/logout">Log out</a></li>
         </ul>
     </div>
     <!-- add form for change password -->
@@ -87,8 +89,8 @@
         <input type="confirm" id="confirm" name="confirm" required>
         <div class="warn">{{warn2}}</div>
 
-
         <button type="submit">Login</button>
     </form>
+    {%endblock%}
 </body>
 </html>

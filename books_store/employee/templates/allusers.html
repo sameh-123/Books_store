@@ -77,6 +77,23 @@
             <li><a href="http://127.0.0.1:8000/logout">Log out</a></li>
         </ul>
     </div>
+    <div class="container">
+        <h1>All Users</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>User Name</th>
+
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        
     {%endblock%}
 </body>
 </html>
