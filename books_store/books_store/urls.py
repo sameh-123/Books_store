@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from home.views import *
 from student.views import *
+from employee.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home),
@@ -26,4 +27,8 @@ urlpatterns = [
     path('signup',signup),
     path('student_page',student_page,name='student_page'),
     path('add_book',add_book),
+    path('loginadmin',loginadmin),
+    path('admin-page',admin_page),
+    path('changeadminpass',changeadminpass),
+    
 ]
