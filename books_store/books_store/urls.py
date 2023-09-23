@@ -31,6 +31,14 @@ urlpatterns = [
     path('loginadmin',loginadmin),
     path('admin-page',admin_page),
     path('changeadminpass',changeadminpass),
+<<<<<<< HEAD
     path('update',update),
+=======
+    path('logout',logout),
+    path('all_users',allusers),
+    path('all_books',allbooks),
+    path('deletebook/<int:id>',deletebook,name='deletebook'),
+    path('addbook',addbook,name='addbook'),
+>>>>>>> 9cfbf1d7c0403feab2509b13aca9d6782e49bc16
     
 ]

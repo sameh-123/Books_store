@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, render
 from .models import *
-from .form import *
 # Create your views here.
 def admin_page(req):
-    return render(req,"employee/admin-page.html")
+    context={}
+    context["user"]=req.session["username"]
+    return render(req,"admin-page.html",context)
 
 def loginadmin(req):
     context={}
@@ -21,30 +22,14 @@ def loginadmin(req):
                 return redirect("/admin-page")
         except:
             context['warn']="there is no user with this username"
-        return render(req,"loginadmin",context)
+    return render(req,"login_admin.html",context)
 
 def changeadminpass(req):
     context={}
     if req.method=='POST':
-        if req.POST.get('password')== req.POST.get('confirm') and req.POST.get('username')!='' :
-            obj=adminall()
+        newpass=req.POST.get('password')
+        if newpass== req.POST.get('confirm') :
             adminall.objects.create(username=req.POST.get('username'),password=req.POST.get('password'))
-            stud=adminall.objects.get(username=req.POST.get('username'))
-            req.session["id"] = stud.id
-            req.session["username"] = stud.username
             return redirect("/admin-page")
         else :context['warn']="you didn't confirm the right password"
     return render(req, "employee/changeadminpass.html",context)
-
-# Create your views here.
-
-
-def add_book(request):
-    context={}
-    form=bookform()
-    context={'form':form}
-    if request.method=='POST':
-        form=bookform(request.POST)
-        if form.is_valid():
-            form.save()
-    return render(request, "employee/add_book.html",context)
