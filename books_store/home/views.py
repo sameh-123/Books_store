@@ -19,7 +19,9 @@ def signin(request):
                 context['warn2']="incorrect password"
                 return render(request, "home/signin.html",context)
             else:
-                context['stud']=stud
+                books=Borrow.objects.filter(student_id=str(stud.id))
+                context['books']=books
+                context['user']=stud.username
                 return render(request, "home/student_page.html",context)
         except:
             context['warn']="there is no user with this username"

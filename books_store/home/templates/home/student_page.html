@@ -46,8 +46,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Student Library Borrowed Books</h1>
-        {% block context%}
+        {% block context%}        
+        <h1>{{user}}'s Borrowed Books</h1>
         <table>
             <thead>
                 <tr>
@@ -57,16 +57,16 @@
                 </tr>
             </thead>
             <tbody>
-                {%for u in users.book_have%}
+                {%for u in books%}
                 <tr>
-                    <td>{{u.name}}</td>
+                    <td>{{u.book}}</td>
                     <td>{{u.date_start}}</td>
                     <td>{{u.date_end}}</td>
                 </tr>
-            {%endfor%}
+                {%endfor%}
             </tbody>
         </table>
-        {%blockend%}
+        {%endblock%}
     </div>
 </body>
 </html>

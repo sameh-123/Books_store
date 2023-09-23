@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'books_store.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'books',
+        'NAME': 'mybooks',
         'USER':'postgres',
         'PASSWORD':'sameh582001',
         'HOST':'localhost',
