@@ -26,11 +26,14 @@ urlpatterns = [
     path('signin',signin),
     path('signup',signup),
     path('student_page',student_page,name='student_page'),
-    path('add_book',add_book),
+    path('addbook',addbook),
     path('borrow_book',borrow_book),
     path('loginadmin',loginadmin),
-    path('admin-page',admin_page),
+    path('admin_page',admin_page),
     path('changeadminpass',changeadminpass),
     path('update',update),
+    path('all_users',allusers),
+    path('all_books',allbooks),
+    path('deletebook/<int:id>',deletebook,name='deletebook'),
     
 ]
