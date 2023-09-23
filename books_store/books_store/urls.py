@@ -27,8 +27,10 @@ urlpatterns = [
     path('signup',signup),
     path('student_page',student_page,name='student_page'),
     path('add_book',add_book),
+    path('borrow_book',borrow_book),
     path('loginadmin',loginadmin),
     path('admin-page',admin_page),
     path('changeadminpass',changeadminpass),
+    path('update',update),
     
 ]

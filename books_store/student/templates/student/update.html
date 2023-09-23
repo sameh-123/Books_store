@@ -44,7 +44,16 @@
             margin-bottom: 15px;
             margin-right: 10px;
         }
-
+        input[type="password"] {
+            width: 300px;
+            height: 50px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
         input[type="submit"] {
             background-color: #007bff;
             height: 50px;
@@ -79,20 +88,37 @@
             font-weight: 900;
             font-style: italic;
         }
+        .warn{
+            font-size: 20px;
+            color: red;
+            margin-bottom:10px ;
+        }
     </style>
 </head>
 <body>
     <div class="nav">
+        {% block context%}
         <ul>
             <li><a href="http://127.0.0.1:8000/signin">Log out</a></li>
-            <li><a href="http://127.0.0.1:8000/add_book">Home</a></li>
+            <li><a href="http://127.0.0.1:8000/student_page">{{user}}</a></li>
+            <li><a href="http://127.0.0.1:8000/">Home</a></li>
         </ul>
+        {%endblock%}
     </div>
     <div class="form-container">
         <form method="post">
             {%csrf_token%}
-            {{form}}
-            <input type="submit" value="Borrow">
+            <label for="cpassword">Current Password:</label>
+            <input type="password" id="cpassword" name="cpassword" required>
+            <div class="warn">{{warn1}}</div>
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="cnfirm">Confirm:</label>
+            <input type="password" id="confirm" name="confirm" required>
+            <div class="warn">{{warn}}</div>
+            <br>
+            <input type="submit" value="Confirm">
         </form>
     </div>
 

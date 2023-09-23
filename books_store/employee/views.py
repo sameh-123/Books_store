@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, render
 from .models import *
+from .form import *
 # Create your views here.
 def admin_page(req):
     return render(req,"employee/admin-page.html")
@@ -34,3 +35,16 @@ def changeadminpass(req):
             return redirect("/admin-page")
         else :context['warn']="you didn't confirm the right password"
     return render(req, "employee/changeadminpass.html",context)
+
+# Create your views here.
+
+
+def add_book(request):
+    context={}
+    form=bookform()
+    context={'form':form}
+    if request.method=='POST':
+        form=bookform(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, "employee/add_book.html",context)
