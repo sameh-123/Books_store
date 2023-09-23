@@ -85,17 +85,17 @@ def search(request):
     context={}
     context['books']=books
     context['user']=std.username
+    request.session['idd']=std.id
     return render(request,"search.html",context)
 
 
 def rett(request,id):
     context={}
-    user_n=request.session['username']
-    std=student.objects.get(username=user_n)
-    user_id=std.id
+    user_id=request.session['idd']
     Borrow.objects.filter(book_id=str(id),student_id=str(user_id)).delete()
-    books=Borrow.objects.filter(student_id=str(std.id))
+    books=Borrow.objects.filter(student_id=str(user_id))
     context['books']=books
-    request.session["id"] = std.id
-    request.session["username"] = std.username
-    return redirect("/student_page")
+    context['user']=student.objects.get(id=str(user_id)).username
+    request.session["id"] = user_id
+    request.session["username"] = student.objects.get(id=str(user_id)).username
+    return render(request,'search.html',context)
